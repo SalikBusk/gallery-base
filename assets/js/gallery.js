@@ -18,27 +18,49 @@ const myApp = document.getElementById("app")
 
 
 function generateGrid() {
+    clearApp();
 
+    myImages.map((imageUrl) => {
+
+        createCard(imageUrl);
+    })
 }
 
 function createCard(myUrl) {
 
+    let myArticalTag = document.createElement('article');
+    myArticalTag.classList.add('galleryCard')
+    let myImageTag = document.createElement('img');
+    myImageTag.src = myUrl;
+    myImageTag.addEventListener('click', clickSmall);
+
+    myArticalTag.appendChild(myImageTag);
+
+    myApp.appendChild(myArticalTag);
 }
 
-// Når der klikkes på et lille billede, udføres følgende handlinger:
-// - Slet det eksisterende gallerigrid ved at fjerne dets element fra DOM'en.
-// - Opret et nyt element til visning af det store billede.
-// - Vis den store version af det valgte billede ved at tilføje det som en baggrund til det nye element.
-// - Indsæt det nye element i DOM'en, så det vises på siden.
-function clickSmall(myEvent) {
 
+function clickSmall(myEvent) {
+    let myUrl = myEvent.target.src;
+    buldBig(myUrl);
 }
 
 function buldBig(myUrl) {
+    clearApp();
 
+    let myArticalTag = document.createElement('article');
+    myArticalTag.classList.add('detailView')
+    
+    let myImageTag = document.createElement('img');
+    myImageTag.src = myUrl;
+    myImageTag.addEventListener('click', generateGrid);
+
+    myArticalTag.appendChild(myImageTag);
+
+    myApp.appendChild(myArticalTag);
 }
 
 function clearApp() {
-    
+    myApp.innerHTML = "";
 }
 

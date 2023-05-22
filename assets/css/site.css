@@ -63,6 +63,7 @@ header p {
 .galleryCard img {
   max-width: 375px;
   max-height: 500px;
+  object-fit: cover;
 }
 
 .galleryCard h2 {
@@ -79,7 +80,7 @@ header p {
   background-color: #eeeeee;
   border: 2px solid black;
   border-radius: 10px;
-  /* min-height: 400px; */
+  min-height: 400px;
   width: 90%;
 }
 
